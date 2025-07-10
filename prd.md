@@ -60,26 +60,169 @@ The AI-Powered Rewarded To-Do List is an intelligent task management application
 
 ### 7. Non-Functional Requirements
 
-* **Performance:** App responds within 200ms for task CRUD operations.
-* **Scalability:** Support 10M users, auto-scale AI services.
-* **Security:** OAuth2 authentication; encrypt all user data at rest and in transit.
-* **Reliability:** 99.9% uptime SLA.
-* **Compliance:** GDPR and CCPA data handling.
+* **Performance:**
+  - App responds within 200ms for task CRUD operations
+  - ZeroDB queries optimized for sub-100ms response times
+  - Efficient indexing and caching strategies
+
+* **Scalability:**
+  - Support 10M+ users with ZeroDB's distributed architecture
+  - Auto-scaling of compute resources
+  - Sharding strategy for ZeroDB collections
+
+* **Security:**
+  - End-to-end encryption via ZeroDB
+  - Zero-knowledge authentication
+  - Fine-grained access control
+  - Regular security audits
+
+* **Data Storage:**
+  - All data stored in ZeroDB with automatic encryption
+  - Regular backups with point-in-time recovery
+  - Data retention and archival policies
+
+* **Reliability:**
+  - 99.9% uptime SLA
+  - ZeroDB high-availability configuration
+  - Automated failover and recovery
+
+* **Compliance:**
+  - GDPR and CCPA compliant data handling
+  - Data residency controls
+  - Right to be forgotten implementation
 
 ### 8. Data Model Overview
 
-* **Users**: id, name, email, preferences
-* **Tasks**: id, user\_id, title, description, due\_date, priority, status
-* **Rewards**: id, task\_id, type, description, image\_url, link
-* **User\_History**: user\_id, task\_id, completed\_at, reward\_claimed\_at
-* **AI\_Models**: model\_id, version, metadata for suggestion engine
+All data will be stored in ZeroDB, leveraging its decentralized and encrypted storage capabilities. The data model includes the following collections:
+
+* **Users**: 
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    name: string;
+    email: string;
+    preferences: object;
+    createdAt: Date;
+    updatedAt: Date;
+  }
+  ```
+
+* **Tasks**:
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    userId: string; // Reference to Users collection
+    title: string;
+    description: string;
+    dueDate: Date;
+    priority: 'low' | 'medium' | 'high';
+    status: 'pending' | 'in-progress' | 'completed' | 'archived';
+    rewardIds: string[]; // References to Rewards collection
+    createdAt: Date;
+    updatedAt: Date;
+  }
+  ```
+
+* **Rewards**:
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    type: 'text' | 'image' | 'link';
+    description: string;
+    metadata: {
+      imageUrl?: string;
+      linkUrl?: string;
+      pointsValue?: number;
+    };
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  }
+  ```
+
+* **UserHistory**:
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    userId: string;
+    taskId: string;
+    action: 'created' | 'updated' | 'completed' | 'reward_claimed';
+    metadata: object;
+    timestamp: Date;
+  }
+  ```
+
+* **AIModels**:
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    name: string;
+    version: string;
+    modelData: Uint8Array; // Encrypted model weights
+    metadata: {
+      trainingMetrics: object;
+      lastTrained: Date;
+      isActive: boolean;
+    };
+    createdAt: Date;
+    updatedAt: Date;
+  }
+  ```
+
+* **AgentLogs**:
+  ```typescript
+  {
+    id: string; // ZeroDB UUID
+    agentId: string;
+    action: string;
+    input: object;
+    output: object;
+    timestamp: Date;
+    metadata: {
+      duration: number;
+      status: 'success' | 'error';
+      error?: string;
+    };
+  }
+  ```
 
 ### 9. System Architecture
 
-* **Frontend:** React Native (iOS, Android), React Web
-* **Backend:** FastAPI (Python), PostgreSQL, Redis (caching), RabbitMQ (jobs)
-* **AI Services:** Microservice in Docker; uses user embeddings and task metadata
-* **Notifications:** Firebase Cloud Messaging, SendGrid
+* **Frontend:** 
+  - React Native (iOS, Android)
+  - React Web (Progressive Web App)
+  - ZeroDB client SDK for direct, secure data access
+
+* **Backend Services:**
+  - FastAPI (Python) with ZeroDB integration
+  - ZeroDB for all data persistence (replacing PostgreSQL, Redis, and file storage)
+  - RabbitMQ for async task processing
+  - ZeroDB-based session management and caching
+
+* **AI & ML Services:**
+  - Containerized microservices with ZeroDB integration
+  - User behavior analysis and embedding generation
+  - Task and reward recommendation engine
+  - All models and embeddings stored in ZeroDB
+
+* **Storage Layer:**
+  - ZeroDB for all data storage needs:
+    - User data and preferences
+    - Task and reward definitions
+    - User history and activity logs
+    - AI/ML models and embeddings
+    - Agent logs and RLHF data
+    - File and media storage (encrypted)
+
+* **Notifications:**
+  - ZeroDB WebSocket integration for real-time updates
+  - Email/SMS notifications via SendGrid/Twilio
+  - Push notifications with ZeroDB-based delivery tracking
+
+* **Security:**
+  - End-to-end encryption via ZeroDB
+  - Zero-knowledge authentication
+  - Fine-grained access control using ZeroDB permissions
 
 ### 10. User Experience & UI Flow
 
@@ -98,13 +241,51 @@ The AI-Powered Rewarded To-Do List is an intelligent task management application
 
 ### 12. Roadmap & Milestones
 
-* **MVP (8 weeks):** Task CRUD, reward assignment, basic AI suggestions, dashboard.
-* **Beta (12 weeks):** Calendar integration, notifications, budgeting, UX refinements.
-* **v1.0 (16 weeks):** Full AI personalization, achievement badges, social sharing.
+#### Phase 1: Foundation (Weeks 1-4)
+- [ ] Set up ZeroDB infrastructure
+- [ ] Implement core data models in ZeroDB
+- [ ] Develop basic CRUD APIs with ZeroDB integration
+- [ ] Set up ZeroDB backup and recovery procedures
+
+#### Phase 2: MVP (Weeks 5-8)
+- [ ] Task and reward management with ZeroDB persistence
+- [ ] Basic AI suggestions using ZeroDB-stored models
+- [ ] Real-time dashboard with ZeroDB WebSocket integration
+- [ ] End-to-end encryption implementation
+
+#### Phase 3: Beta (Weeks 9-12)
+- [ ] Calendar integration with ZeroDB sync
+- [ ] Real-time notifications using ZeroDB pub/sub
+- [ ] Budgeting system with ZeroDB transactions
+- [ ] Performance optimization for ZeroDB queries
+
+#### Phase 4: v1.0 (Weeks 13-16)
+- [ ] Full AI personalization with ZeroDB-based RLHF
+- [ ] Achievement and analytics system
+- [ ] Social sharing with ZeroDB permissions
+- [ ] Comprehensive monitoring and alerting for ZeroDB
 
 ### 13. Risks & Mitigation
 
-* **Low AI suggestion relevance**: Collect feedback loops and retrain models monthly.
-* **User privacy concerns**: Transparent data policy; allow opt-out of data collection.
+* **Data Migration Complexity**: 
+  - Risk: Moving to ZeroDB may require data migration
+  - Mitigation: Implement phased migration with dual-write strategy
+
+* **Performance Optimization**:
+  - Risk: Initial queries might be slower than traditional databases
+  - Mitigation: Implement caching strategies and query optimization
+
+* **Developer Onboarding**:
+  - Risk: Team needs to learn ZeroDB patterns
+  - Mitigation: Comprehensive documentation and training
+
+* **AI Suggestion Relevance**:
+  - Risk: Initial suggestions might not be accurate
+  - Mitigation: Implement feedback loops and store training data in ZeroDB
+
+* **Security and Compliance**:
+  - Risk: Ensuring proper access controls
+  - Mitigation: Leverage ZeroDB's built-in encryption and access control
+  - Regular security audits and penetration testing
 
 ---
