@@ -1,0 +1,169 @@
+```json
+[
+  {
+    "title": "US-1.1: Sign up with email and password",
+    "body": "As a new user, I want to sign up with email and password so that I can create a personal account.",
+    "labels": ["Epic: User Onboarding & Authentication", "user-story"]
+  },
+  {
+    "title": "US-1.2: Log in with credentials",
+    "body": "As a returning user, I want to log in with my credentials so that I can access my tasks and rewards.",
+    "labels": ["Epic: User Onboarding & Authentication", "user-story"]
+  },
+  {
+    "title": "US-1.3: Reset password via email",
+    "body": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+    "labels": ["Epic: User Onboarding & Authentication", "user-story"]
+  },
+  {
+    "title": "US-1.4: Enable/disable calendar sync",
+    "body": "As a user, I want to enable/disable calendar sync so that I control sharing with external calendars.",
+    "labels": ["Epic: User Onboarding & Authentication", "user-story"]
+  },
+  {
+    "title": "US-2.1: Create new task",
+    "body": "As a user, I want to create a new task with title, description, due date, and priority so that I can track what I need to do.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-2.2: View filtered task list",
+    "body": "As a user, I want to view a list of all my tasks filtered by status (pending, in-progress, completed) so I can manage my workload.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-2.3: Edit task details",
+    "body": "As a user, I want to edit task details so I can adjust deadlines, descriptions, or priority.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-2.4: Delete a task",
+    "body": "As a user, I want to delete a task so I can remove irrelevant items.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-2.5: Mark task in-progress and completed",
+    "body": "As a user, I want to mark a task “in-progress” and then “completed” so I can track progress.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-2.6: Highlight overdue tasks",
+    "body": "As a user, I want to see my overdue tasks highlighted so I know what’s past due.",
+    "labels": ["Epic: Task Management", "user-story"]
+  },
+  {
+    "title": "US-3.1: Assign rewards to task",
+    "body": "As a user, I want to assign one or more rewards (text, image, link) to a task so that I have an incentive structure.",
+    "labels": ["Epic: Reward Definition & Redemption", "user-story"]
+  },
+  {
+    "title": "US-3.2: View task rewards",
+    "body": "As a user, I want to view all rewards associated with a task on the task detail screen.",
+    "labels": ["Epic: Reward Definition & Redemption", "user-story"]
+  },
+  {
+    "title": "US-3.3: Claim reward after completion",
+    "body": "As a user, I want to claim a reward after completing a task so that I’m reminded to enjoy my reward.",
+    "labels": ["Epic: Reward Definition & Redemption", "user-story"]
+  },
+  {
+    "title": "US-3.4: View reward-claim history",
+    "body": "As a user, I want to see my reward-claim history so I can track which rewards I’ve collected.",
+    "labels": ["Epic: Reward Definition & Redemption", "user-story"]
+  },
+  {
+    "title": "US-4.1: Suggest optimal reward",
+    "body": "As a user, I want the system to suggest an optimal reward type when I create a task so I don’t have to think too hard.",
+    "labels": ["Epic: AI-Powered Suggestions", "user-story"]
+  },
+  {
+    "title": "US-4.2: Recommend best time slot",
+    "body": "As a busy user, I want the AI to recommend a best time slot to work on my task based on my past patterns.",
+    "labels": ["Epic: AI-Powered Suggestions", "user-story"]
+  },
+  {
+    "title": "US-4.3: Accept or override AI suggestions",
+    "body": "As a user, I want to accept or override AI suggestions so I remain in control.",
+    "labels": ["Epic: AI-Powered Suggestions", "user-story"]
+  },
+  {
+    "title": "US-4.4: Collect feedback on AI suggestions",
+    "body": "As a product manager, I want to collect feedback on AI suggestions so we can refine our models.",
+    "labels": ["Epic: AI-Powered Suggestions", "user-story"]
+  },
+  {
+    "title": "US-5.1: Connect external calendar",
+    "body": "As a user, I want to connect my Google or Apple calendar so tasks appear alongside existing events.",
+    "labels": ["Epic: Smart Scheduling & Calendar Integration", "user-story"]
+  },
+  {
+    "title": "US-5.2: Auto-slot tasks",
+    "body": "As a user, I want the system to auto-slot tasks into free calendar windows so I don’t manually pick times.",
+    "labels": ["Epic: Smart Scheduling & Calendar Integration", "user-story"]
+  },
+  {
+    "title": "US-5.3: Rescheduling suggestions",
+    "body": "As a user, I want to see rescheduling suggestions if I miss a task so I can re-plan easily.",
+    "labels": ["Epic: Smart Scheduling & Calendar Integration", "user-story"]
+  },
+  {
+    "title": "US-6.1: Dashboard overview",
+    "body": "As a user, I want a dashboard that shows completed vs. pending tasks so I see my productivity at a glance.",
+    "labels": ["Epic: Progress Tracking & Analytics", "user-story"]
+  },
+  {
+    "title": "US-6.2: View streaks",
+    "body": "As a user, I want to view my current and longest streak of daily task completions so I stay motivated.",
+    "labels": ["Epic: Progress Tracking & Analytics", "user-story"]
+  },
+  {
+    "title": "US-6.3: Track reward budget usage",
+    "body": "As a user, I want to track my reward budget usage over a period so I don’t overspend.",
+    "labels": ["Epic: Progress Tracking & Analytics", "user-story"]
+  },
+  {
+    "title": "US-6.4: Achievement badges",
+    "body": "As a user, I want badges or milestone celebrations displayed when I hit goals so I feel rewarded.",
+    "labels": ["Epic: Progress Tracking & Analytics", "user-story"]
+  },
+  {
+    "title": "US-7.1: Push reminders",
+    "body": "As a user, I want push reminders before a task is due so I don’t forget.",
+    "labels": ["Epic: Notifications & Reminders", "user-story"]
+  },
+  {
+    "title": "US-7.2: Daily email summaries",
+    "body": "As a user, I want email summaries of today’s tasks each morning so I start my day organized.",
+    "labels": ["Epic: Notifications & Reminders", "user-story"]
+  },
+  {
+    "title": "US-7.3: Reward claim reminders",
+    "body": "As a user, I want to be reminded to claim my reward after task completion so I don’t skip the reward.",
+    "labels": ["Epic: Notifications & Reminders", "user-story"]
+  },
+  {
+    "title": "US-7.4: Configure notification frequency",
+    "body": "As a user, I want to configure notification frequency (e.g., only critical tasks) in settings.",
+    "labels": ["Epic: Notifications & Reminders", "user-story"]
+  },
+  {
+    "title": "US-8.1: Set daily work window",
+    "body": "As a user, I want to set my daily work window (e.g., 9am–5pm) so AI schedules tasks only then.",
+    "labels": ["Epic: Settings & Preferences", "user-story"]
+  },
+  {
+    "title": "US-8.2: Choose reward budget period",
+    "body": "As a user, I want to choose my reward budget period (weekly, monthly) so budgeting aligns with me.",
+    "labels": ["Epic: Settings & Preferences", "user-story"]
+  },
+  {
+    "title": "US-8.3: Update profile and password",
+    "body": "As a user, I want to update my profile details and password so I keep my account secure.",
+    "labels": ["Epic: Settings & Preferences", "user-story"]
+  },
+  {
+    "title": "US-8.4: Delete account and data",
+    "body": "As a user, I want to delete my account and data so I can leave the service if desired.",
+    "labels": ["Epic: Settings & Preferences", "user-story"]
+  }
+]
+```
